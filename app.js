@@ -1,4 +1,8 @@
 require('dotenv').config();
+console.log("Database Host:", process.env.HOST);
+console.log("Database Port:", process.env.PORT);
+console.log("Database User:", process.env.ADMIN_USERNAME);
+
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -10,7 +14,14 @@ var guitarsRouter = require('./routes/guitars');
 var populateRouter = require('./routes/populate');
 
 var db = require("./models");
-db.sequelize.sync({ force: false })
+db.sequelize.authenticate()
+  .then(() => {
+    console.log("Database connected successfully.");
+    db.sequelize.sync({ force: false });
+  })
+  .catch(err => {
+    console.error("Database connection failed:", err);
+  });
 
 var app = express();
 

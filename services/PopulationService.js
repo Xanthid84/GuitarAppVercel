@@ -13,6 +13,8 @@ class PopulationService {
         this.Color = db.Color;
         this.Brand = db.Brand;
         this.Model = db.Model;
+        this.isPopulated = false; // Add this!
+
     }
 
     async populateDatabase() {

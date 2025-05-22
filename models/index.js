@@ -8,7 +8,7 @@ const connection = {
   username: process.env.ADMIN_USERNAME,
   password: process.env.ADMIN_PASSWORD,
   host: process.env.HOST,
-  port: process.env.DB_PORT,
+  port: process.env.PORT,
   dialect: process.env.DIALECT,
   // dialectmodel: process.env.DIALECTMODEL,
   dialectmodel: require('mysql2'),
